@@ -1,0 +1,92 @@
+import bottleMain from './assets/drink.png';
+
+const navLinks = [
+  { href: '#products', label: 'Products' },
+  { href: '#clinic', label: 'Juice Clinic' },
+  { href: '#about', label: 'About CPJ' },
+  { href: '#gallery', label: 'Gallery' },
+];
+
+const categoryLabels = ['Juice', 'Shots', 'Packs'];
+
+const App = () => (
+  <div className="app-shell">
+    <header className="hero-header">
+      <nav className="nav-links nav-left" aria-label="Primary">
+        {navLinks.slice(0, 2).map((link) => (
+          <a key={link.label} href={link.href}>
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <div className="logo-cluster" aria-label="CPJ logo">
+        <span className="logo-icon" aria-hidden="true">
+          ⌘
+        </span>
+        <span className="logo-text">CPJ</span>
+      </div>
+
+      <div className="nav-right">
+        <nav className="nav-links nav-right-links" aria-label="Secondary">
+          {navLinks.slice(2).map((link) => (
+            <a key={link.label} href={link.href}>
+              {link.label}
+            </a>
+          ))}
+        </nav>
+        <button className="signup-btn" type="button">
+          Sign Up
+        </button>
+      </div>
+    </header>
+
+    <aside className="category-panel" aria-label="Flavour categories">
+      {categoryLabels.map((label, index) => (
+        <button
+          key={label}
+          type="button"
+          className={`category-chip ${index === 0 ? 'active' : ''}`}
+        >
+          {label}
+        </button>
+      ))}
+    </aside>
+
+    <main className="hero">
+      <div className="hero-stage">
+        <h1 aria-label="CTRL" className="hero-wordmark">
+          CTRL
+        </h1>
+        <span className="hero-sup" aria-hidden="true">
+          1
+        </span>
+
+        <div className="bottle-stage">
+          <img
+            src={bottleMain}
+            alt="Ctrl energy shake bottle"
+            className="bottle-main"
+            draggable="false"
+          />
+        </div>
+      </div>
+
+      <section className="hero-details">
+        <h2>The Energy Shake</h2>
+        <p>
+          Almond milk, beetroot, vanilla pods, maca powder, cacao and sea salt.
+        </p>
+        <p className="price">330ml / £4.50</p>
+      </section>
+    </main>
+
+    <section className="cta-band" aria-label="Order call to action">
+      <button type="button" className="primary-cta">
+        Order now
+      </button>
+    </section>
+  </div>
+);
+
+export default App;
