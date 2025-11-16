@@ -1,4 +1,5 @@
-﻿import bottleMain from "./assets/drink.png"
+﻿import { useState } from "react"
+import bottleMain from "./assets/drink.png"
 import featureImage from "./assets/beetroot.png"
 import beetrootTwo from "./assets/beetroot2.png"
 import manageWeightImg from "./assets/manageweight.png"
@@ -11,7 +12,11 @@ const navLinks = [
   { href: '#gallery', label: 'Gallery' },
 ]
 
-const categoryLabels = ['Juice', 'Shots', 'Packs']
+const categorySections = [
+  { label: 'Juice', targetId: 'section-1' },
+  { label: 'Shots', targetId: 'clinic' },
+  { label: 'Packs', targetId: 'products' },
+]
 
 const benefitCards = [
   {
@@ -37,9 +42,29 @@ const benefitCards = [
   },
 ]
 
-const App = () => (
-  <div className="app-shell">
-    <header className="hero-header">
+const App = () => {
+  const currentYear = new Date().getFullYear()
+  const [activeCategory, setActiveCategory] = useState(categorySections[0].targetId)
+
+  const handleCategoryClick = (targetId) => {
+    setActiveCategory(targetId)
+    if (targetId === 'section-1') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
+
+    const targetElement = document.getElementById(targetId)
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }
+  }
+
+  return (
+    <div className="app-shell">
+      <header className="hero-header">
       <nav className="nav-links nav-left" aria-label="Primary">
         {navLinks.slice(0, 2).map((link) => (
           <a key={link.label} href={link.href}>
@@ -73,9 +98,14 @@ const App = () => (
 
     <aside className="category-panel" aria-label="Flavour categories">
       <div className="category-items">
-        {categoryLabels.map((label, index) => (
-          <button key={label} type="button" className={`category-chip ${index === 0 ? 'active' : ''}`}>
-            {label}
+        {categorySections.map((category) => (
+          <button
+            key={category.label}
+            type="button"
+            className={`category-chip ${activeCategory === category.targetId ? 'active' : ''}`}
+            onClick={() => handleCategoryClick(category.targetId)}
+          >
+            {category.label}
           </button>
         ))}
       </div>
@@ -88,7 +118,7 @@ const App = () => (
     </aside>
 
     <main className="hero">
-      <div className="hero-stage">
+      <div className="hero-stage" id="section-1">
         <h1 aria-label="CTRL" className="hero-wordmark">
           CTRL
         </h1>
@@ -158,8 +188,45 @@ const App = () => (
         ))}
       </section>
     </main>
+
+    <footer className="site-footer" aria-label="CTRL Pressed Juice footer">
+      <div className="footer-grid">
+        <div className="footer-brand">
+          <p className="footer-kicker">Cold-pressed energy fuel</p>
+          <p className="footer-wordmark">
+            CTRL<span aria-hidden="true"> / </span>CPJ
+          </p>
+          <p className="footer-note">Hand bottled in Shoreditch, London</p>
+        </div>
+
+        <div className="footer-mission" aria-label="CTRL mission statement">
+          <p className="footer-headline">STAY IN CTRL</p>
+          <p className="footer-subhead">Daily blends built for stamina, focus, and calm.</p>
+          <div className="footer-stats">
+            <div>
+              <p className="stat-number">18g</p>
+              <p className="stat-label">Plant protein</p>
+            </div>
+            <div>
+              <p className="stat-number">0%</p>
+              <p className="stat-label">Refined sugar</p>
+            </div>
+            <div>
+              <p className="stat-number">5</p>
+              <p className="stat-label">Functional botanicals</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="footer-meta">
+          <p>&copy; {currentYear} CPJ Labs Ltd.</p>
+          <p>Crafted with beetroot, cacao, and almond milk</p>
+        </div>
+      </div>
+    </footer>
   </div>
-)
+  )
+}
 
 export default App
 

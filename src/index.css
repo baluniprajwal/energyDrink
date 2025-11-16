@@ -29,6 +29,7 @@ body {
 
 #root {
   min-height: 100vh;
+  width: 100%;
 }
 
 a {
@@ -565,6 +566,175 @@ button {
 
   .bottle-stage {
     top: -20%;
+  }
+}
+
+.site-footer {
+  margin-top: 0;
+  margin-inline: calc(-1 * clamp(2rem, 5vw, 5rem));
+  padding-block: clamp(1.8rem, 5vw, 3rem);
+  padding-inline: clamp(1.5rem, 6vw, 5rem);
+  background: linear-gradient(120deg, rgba(242, 114, 79, 0.1), rgba(249, 217, 196, 0.65));
+  border-top: 1px solid rgba(58, 58, 58, 0.12);
+  color: #3d2c26;
+}
+
+.footer-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  row-gap: 2rem;
+  font-smooth: always;
+}
+
+.footer-brand {
+  max-width: 320px;
+  font-feature-settings: 'ss01' 1, 'liga' 1;
+  text-wrap: balance;
+}
+
+.footer-mission {
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-feature-settings: 'ss02' 1, 'tnum' 1;
+  position: relative;
+  padding-left: 0.4rem;
+}
+
+.footer-mission::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  bottom: 0.2rem;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(242, 114, 79, 0.5), rgba(61, 44, 38, 0.4));
+  border-radius: 999px;
+}
+
+.footer-kicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  color: rgba(61, 44, 38, 0.65);
+  font-variant-caps: all-small-caps;
+}
+
+.footer-wordmark {
+  font-size: clamp(1.4rem, 3.4vw, 2rem);
+  font-weight: 650;
+  letter-spacing: 0.35em;
+  margin: 0;
+  text-transform: uppercase;
+  line-height: 1.2;
+  font-feature-settings: 'ss01' 1, 'calt' 1;
+}
+
+.footer-note {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: rgba(61, 44, 38, 0.68);
+  text-wrap: balance;
+}
+
+.footer-headline {
+  font-size: clamp(0.95rem, 2.4vw, 1.3rem);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0;
+  color: rgba(28, 28, 28, 0.9);
+  line-height: 1.4;
+}
+
+.footer-subhead {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: rgba(61, 44, 38, 0.72);
+  line-height: 1.6;
+}
+
+.footer-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-stats > div {
+  min-width: 80px;
+  padding-left: 0.4rem;
+  border-left: 1px solid rgba(61, 44, 38, 0.18);
+}
+
+.stat-number {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  font-feature-settings: 'tnum' 1;
+  color: rgba(28, 28, 28, 0.85);
+}
+
+.stat-label {
+  margin: 0;
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: rgba(61, 44, 38, 0.55);
+  line-height: 1.4;
+}
+
+.footer-meta {
+  text-align: right;
+  font-size: 0.9rem;
+  color: rgba(61, 44, 38, 0.9);
+  font-feature-settings: 'tnum' 1;
+  line-height: 1.5;
+}
+
+.footer-meta p {
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+.footer-meta p:first-child {
+  font-size: 0.75rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(61, 44, 38, 0.65);
+}
+
+.footer-meta p:last-child {
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: rgba(61, 44, 38, 0.72);
+  text-wrap: balance;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-mission,
+  .footer-meta {
+    text-align: left;
   }
 }
 
